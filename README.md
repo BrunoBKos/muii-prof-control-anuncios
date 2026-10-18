@@ -163,16 +163,6 @@ Para terminar, cierra la sesión de la aplicación.
 
 **Pregunta (1 punto).** Al pulsar **Salir**, Cognito muestra una página de error en lugar de volver al front. ¿Por qué? ¿Por qué no se corrigió al arreglar el inicio de sesión? Corrige este problema en `cognito.sh` y despliega correctamente.
 
-## Cómo entregar
-
-1. Comprueba que `entrega.txt` tiene los dos valores correctos. El EXAM_ID lo escribió `params.sh` y la IP, `ec2.sh`.
-2. Comprueba que `sabotaje.txt` existe en la raíz del repositorio.
-3. Responde a las preguntas abiertas en el cuestionario de Moodle (no en el repositorio).
-4. Haz *commit* de los cambios realizados, así como de `entrega.txt` y `sabotaje.txt`.
-5. Abre un *pull request* desde la rama `main` de tu *fork* contra la rama `main` del repositorio original y rellena la plantilla.
-
-El *pull request* es parte de la evidencia. Su fecha y su contenido nos permiten ver qué hiciste y cuándo.
-
 ## Recuerda
 
 - No subas `params.txt` ni la clave SSH (`.pem`). Ya están en `.gitignore`.
