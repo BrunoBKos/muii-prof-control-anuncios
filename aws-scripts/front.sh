@@ -19,7 +19,7 @@ fi
 echo -n "Subiendo el front a la instancia... "
 # TODO: Escribe en cada comando (ssh, scp y ssh) la IP pública de la instancia (ec2.sh la escribió en entrega.txt).
 ssh -T -o StrictHostKeyChecking=no -o LogLevel=ERROR -i "$PROJECT_ROOT/ssh-key/labsuser.pem" ubuntu@<ip publica> "rm -rf /tmp/front && mkdir /tmp/front"
-scp -q -o StrictHostKeyChecking=no -i "$PROJECT_ROOT/ssh-key/labsuser.pem" "$PROJECT_ROOT/front"/* ubuntu@<ip publica>:/tmp/front/
+scp -o StrictHostKeyChecking=no -o LogLevel=ERROR -i "$PROJECT_ROOT/ssh-key/labsuser.pem" "$PROJECT_ROOT/front"/* ubuntu@<ip publica>:/tmp/front/
 
 ssh -T -o StrictHostKeyChecking=no -o LogLevel=ERROR -i "$PROJECT_ROOT/ssh-key/labsuser.pem" ubuntu@<ip publica> << 'ENDSSH'
 set -e

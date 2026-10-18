@@ -32,7 +32,7 @@ fi
 
 echo -n "Subiendo el back a la instancia... "
 # TODO: Escribe en el comando la IP pública de la instancia (ec2.sh la escribió en entrega.txt).
-scp -q -o StrictHostKeyChecking=no -i "$PROJECT_ROOT/ssh-key/labsuser.pem" "$BACKEND_JAR" ubuntu@<ip publica>:/tmp/anuncios.jar
+scp -o StrictHostKeyChecking=no -o LogLevel=ERROR -i "$PROJECT_ROOT/ssh-key/labsuser.pem" "$BACKEND_JAR" ubuntu@<ip publica>:/tmp/anuncios.jar
 echo "listo."
 
 echo "Configurando el servicio en la instancia EC2..."
