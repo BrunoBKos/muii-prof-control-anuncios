@@ -21,7 +21,7 @@ fi
 set -a
 source "$PROJECT_ROOT/params.txt"
 set +a
-INSTANCE_IP="$(sed -n 's/^IP=//p' "$PROJECT_ROOT/entrega.txt" 2>/dev/null | head -n 1 | tr -d '[:space:]')"
+INSTANCE_IP="$(sed -n 's/^INSTANCE_IP=//p' "$PROJECT_ROOT/entrega.txt" 2>/dev/null | head -n 1 | tr -d '[:space:]')"
 
 source "$PROJECT_ROOT/params.sh"
 _v=$(variante_sabotaje "$EXAM_ID")

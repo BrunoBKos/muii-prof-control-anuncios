@@ -45,7 +45,7 @@ bash params.sh <EXAM_ID>
    - `ec2.sh` también abre el puerto **22** (SSH), solo se abre desde **tu IP**, con una regla `/32`.
    - Al terminar, el script escribe **la IP pública de la instancia** en `entrega.txt` (tanto para corregir el examen como para que tu la conozcas).
 
-**Checkpoint.** Comprueba que `entrega.txt` tiene la IP de la instancia en el campo `IP`, y puedes conectarte por SSH.
+**Checkpoint.** Comprueba que `entrega.txt` tiene la IP de la instancia en el campo `INSTANCE_IP`, y puedes conectarte por SSH.
 
 ## Tareas (5 puntos de despliegue)
 

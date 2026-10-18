@@ -94,7 +94,7 @@ ENV
         cat > "$ENTREGA" <<ENTREGA_TXT
 # EXAM_ID lo escribe bash params.sh. La IP de la instancia la escribe aws-scripts/ec2.sh.
 EXAM_ID=$EXAM_ID
-IP=
+INSTANCE_IP=
 ENTREGA_TXT
     fi
     echo "  entrega.txt .......... EXAM_ID escrito (la IP la escribe ec2.sh)"

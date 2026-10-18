@@ -79,7 +79,7 @@ sleep 45
 echo "listo."
 
 INSTANCE_IP=$(aws ec2 describe-addresses --allocation-ids "$ALLOCATION_ID" --query "Addresses[0].PublicIp" --output text)
-sed "s/^IP=.*/IP=$INSTANCE_IP/" "$PROJECT_ROOT/entrega.txt" > "$PROJECT_ROOT/entrega.txt.tmp"
+sed "s/^INSTANCE_IP=.*/INSTANCE_IP=$INSTANCE_IP/" "$PROJECT_ROOT/entrega.txt" > "$PROJECT_ROOT/entrega.txt.tmp"
 mv "$PROJECT_ROOT/entrega.txt.tmp" "$PROJECT_ROOT/entrega.txt"
 echo "IP pública de la instancia escrita en entrega.txt."
 
