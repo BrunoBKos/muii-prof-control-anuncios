@@ -113,7 +113,7 @@ Si tienes que volver a crear el *User Pool* y su dominio, el Hosted UI de Cognit
 
 El campo `usuario` debe mostrar tu usuario. Si no es así, no sigas porque hay algo mal.
 
-**Pregunta (1,5 puntos).** Abre `https://<INSTANCE_IP>/`, pulsa **Entrar con Cognito** e intenta iniciar sesión con el usuario del examen (`EXAM_USER` y `EXAM_USER_PASS` de `params.txt`). El Hosted UI muestra un error. ¿Por qué falla? Cognito solo redirige a direcciones registradas de antemano en el cliente de la aplicación: explica por qué existe esa restricción. Corrige este problema en `cognito.sh` y despliega correctamente.
+**Pregunta (1,5 puntos).** Abre `https://<INSTANCE_IP>/` y pulsa **Entrar con Cognito**. El Hosted UI muestra un error en lugar de pedirte el usuario y la contraseña. ¿Por qué falla? Corrige este problema en `cognito.sh` y despliega correctamente.
 
 ### Tarea 4. Secretos · 0,75 puntos
 
