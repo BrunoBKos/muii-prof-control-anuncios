@@ -35,7 +35,7 @@ class AnunciosApplicationTest {
 
     @Test
     void listarConCualquierUsuarioAutenticadoDa200() throws Exception {
-        mockMvc.perform(get("/api/mensajes").with(jwt().jwt(j -> j.claim("username", "corrector"))))
+        mockMvc.perform(get("/api/mensajes").with(jwt().jwt(j -> j.claim("username", "admin"))))
             .andExpect(status().isOk());
     }
 
@@ -48,7 +48,7 @@ class AnunciosApplicationTest {
     @Test
     void crearAutenticadoPeroFueraDelGrupoAdminDa403() throws Exception {
         mockMvc.perform(post("/api/mensajes")
-                .with(jwt().jwt(j -> j.claim("username", "corrector")))
+                .with(jwt().jwt(j -> j.claim("username", "admin")))
                 .contentType(MediaType.APPLICATION_JSON).content(CUERPO))
             .andExpect(status().isForbidden());
     }
@@ -56,24 +56,24 @@ class AnunciosApplicationTest {
     @Test
     void crearDentroDelGrupoAdminDa201() throws Exception {
         mockMvc.perform(post("/api/mensajes")
-                .with(jwt().jwt(j -> j.claim("username", "corrector"))
+                .with(jwt().jwt(j -> j.claim("username", "admin"))
                     .authorities(new SimpleGrantedAuthority("ROLE_ADMIN")))
                 .contentType(MediaType.APPLICATION_JSON).content(CUERPO))
             .andExpect(status().isCreated())
-            .andExpect(jsonPath("$.autor").value("corrector"));
+            .andExpect(jsonPath("$.autor").value("admin"));
     }
 
     @Test
     void elGrupoAdminDeCognitoSeConvierteEnRolAdmin() {
         Jwt token = Jwt.withTokenValue("t").header("alg", "none")
-            .claim("username", "corrector").claim("cognito:groups", List.of("admin")).build();
+            .claim("username", "admin").claim("cognito:groups", List.of("admin")).build();
         var autoridades = SecurityConfig.jwtAuthenticationConverter().convert(token).getAuthorities();
         assertThat(autoridades).extracting(Object::toString).contains("ROLE_ADMIN");
     }
 
     @Test
     void sinGruposNoHayRoles() {
-        Jwt token = Jwt.withTokenValue("t").header("alg", "none").claim("username", "corrector").build();
+        Jwt token = Jwt.withTokenValue("t").header("alg", "none").claim("username", "admin").build();
         var autoridades = SecurityConfig.jwtAuthenticationConverter().convert(token).getAuthorities();
         assertThat(autoridades).extracting(Object::toString).noneMatch(a -> a.startsWith("ROLE_"));
     }
@@ -90,8 +90,8 @@ class AnunciosApplicationTest {
     @Test
     void whoamiMuestraUsuarioYGrupos() throws Exception {
         mockMvc.perform(get("/api/whoami")
-                .with(jwt().jwt(j -> j.claim("username", "corrector").claim("cognito:groups", List.of("admin")))))
-            .andExpect(jsonPath("$.usuario").value("corrector"))
+                .with(jwt().jwt(j -> j.claim("username", "admin").claim("cognito:groups", List.of("admin")))))
+            .andExpect(jsonPath("$.usuario").value("admin"))
             .andExpect(jsonPath("$.grupos", hasItem("admin")));
     }
 }
