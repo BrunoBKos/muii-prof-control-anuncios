@@ -90,7 +90,7 @@ El script crea además el dominio del **Hosted UI** (la página de inicio de ses
 
 El script genera `back/src/main/resources/cognito.properties` y `front/config.js`. Vuelve a ejecutar `back.sh` y `front.sh` para que el back y el front recojan la configuración de Cognito.
 
-Si tienes que volver a crear el *User Pool* y su dominio, el Hosted UI de Cognito puede tardar **uno o dos minutos** en responder bien (mientras tanto da errores como «Client does not exist»).
+Cognito compara las URL de retorno y de cierre de sesión **carácter a carácter** con la que le envía el front, barra final incluida. Si tienes que volver a crear el *User Pool* y su dominio, el Hosted UI de Cognito puede tardar **uno o dos minutos** en responder bien (mientras tanto da errores como «Client does not exist»).
 
 **Checkpoint.**
 
