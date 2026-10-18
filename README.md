@@ -47,7 +47,7 @@ bash params.sh <EXAM_ID>
 
 **Checkpoint.** Comprueba que `entrega.txt` tiene la IP de la instancia en el campo `INSTANCE_IP`, y puedes conectarte por SSH.
 
-## Tareas (5 puntos de despliegue)
+## Tareas (4 puntos de despliegue)
 
 Ejecuta los scripts de `aws-scripts/` en el orden que indican las tareas.
 
@@ -86,7 +86,7 @@ Completa los `TODO` de `aws-scripts/cognito.sh`, que piden escribir en los coman
 | Nombre del *User Pool* | `anuncios-pool` |
 | Nombre del *App Client* | `anuncios-front` |
 
-El script crea además el dominio del **Hosted UI** (la página de inicio de sesión de Cognito), registra las URL de retorno y de cierre de sesión (con la IP de la instancia, que `ec2.sh` ya escribió en el script), crea el grupo `admin`, el usuario del examen y asigna el usuario al grupo `admin`).
+El script crea además el dominio del **Hosted UI** (la página de inicio de sesión de Cognito), registra las URL de retorno y de cierre de sesión (con la IP de la instancia, que `ec2.sh` ya escribió en el script), crea el grupo `admin` y el usuario del examen, y asigna el usuario al grupo `admin`.
 
 El script genera `back/src/main/resources/cognito.properties` y `front/config.js`. Vuelve a ejecutar `back.sh` y `front.sh` para que el back y el front recojan la configuración de Cognito.
 
@@ -94,7 +94,7 @@ Cognito compara las URL de retorno y de cierre de sesión **carácter a carácte
 
 **Checkpoint.**
 
-1. Obtén un *access token* por línea de comandos, sustituyendo los tres valores entre `<...>`:
+1. Obtén un *access token* por línea de comandos, sustituyendo los tres valores entre `<...>` (`EXAM_USER` y `EXAM_USER_PASS` están en `params.txt`, y el `client id` en `front/config.js`):
 
    ```bash
    aws cognito-idp initiate-auth \
@@ -113,7 +113,7 @@ Cognito compara las URL de retorno y de cierre de sesión **carácter a carácte
 
 El campo `usuario` debe mostrar tu usuario. Si no es así, no sigas porque hay algo mal.
 
-**Pregunta (1,5 puntos).** Abre `https://<INSTANCE_IP>/` y pulsa **Entrar con Cognito**. El Hosted UI muestra un error en lugar de pedirte el usuario y la contraseña. ¿Por qué falla? Corrige este problema en `cognito.sh` y despliega correctamente.
+**Pregunta (1,5 puntos).** Abre `https://<INSTANCE_IP>/` y pulsa **Entrar con Cognito**. El Hosted UI muestra un error en lugar de pedirte el usuario y la contraseña. ¿Por qué falla? Cognito solo redirige a direcciones registradas de antemano en el cliente de la aplicación: explica por qué existe esa restricción. Corrige este problema en `cognito.sh` y despliega correctamente.
 
 ### Tarea 4. Secretos · 0,75 puntos
 
