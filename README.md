@@ -55,7 +55,7 @@ Ejecuta los scripts de `aws-scripts/` en el orden que indican las tareas.
 
 Completa los `TODO` de `back.sh` y ejecútalo. Debería terminar **sin errores**.
 
-**Pregunta (0,75 puntos).** El back publica su estado de salud en el puerto de gestión 8090, pero `http://<INSTANCE_IP>:8090/actuator/health` no responde desde Internet. ¿Por qué no? Corrige este problema en `ec2.sh` y despliega correctamente.
+**Pregunta (0,75 puntos).** El back publica su estado de salud en el puerto de gestión 8090, pero `http://<INSTANCE_IP>:8090/actuator/health` no responde desde Internet. ¿Por qué no? Corrígelo desde la **consola web de AWS** y deja también el cambio escrito en `ec2.sh`.
 
 **Pregunta adicional (+1 punto).** `http://<INSTANCE_IP>:8090/actuator/health` responde aunque `nginx.sh` no se haya ejecutado. ¿Por qué se puede acceder al puerto 8090 sin Nginx?
 
