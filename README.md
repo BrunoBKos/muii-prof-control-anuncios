@@ -138,7 +138,7 @@ printf '%s' "<DB_PASS>" | sha256sum
 
 (`printf '%s'` evita añadir un salto de línea, que cambiaría el resultado.)
 
-**Pregunta (0,75 puntos).** `GET /api/whoami` no exige iniciar sesión y, aun así, la aplicación consigue leer el secreto de Secrets Manager. ¿Cuál es la razon? ¿Se trata de un error?
+**Pregunta (0,75 puntos).** `GET /api/whoami` indica que la sesión no está iniciada (el usuario es `null`) pero, aun así, la aplicación consigue leer el secreto de Secrets Manager. ¿Cuál es la razon? ¿Se trata de un error?
 
 ### Tarea 5. Fallo sembrado · 1,25 puntos
 
@@ -146,9 +146,8 @@ printf '%s' "<DB_PASS>" | sha256sum
 
 Ejecuta `aws-scripts/sabotaje.sh`, **una sola vez**. El script introduce **un fallo en tu despliegue** que depende de tu EXAM_ID y **no te dice cuál es**. Tu trabajo es averiguar qué se ha roto y repararlo. Al terminar, el script escribe `sabotaje.txt`, que **SÍ SE ENTREGA**.
 
-**Checkpoint.** Cuando hayas reparado el fallo, comprueba las tres cosas que el propio script te recuerda.
+**Checkpoint.** Cuando hayas reparado el fallo, comprueba las dos cosas que el propio script te recuerda.
 
-- La aplicación responde en `https://<INSTANCE_IP>/api/whoami`.
 - Puedes iniciar sesión en el front con el usuario del examen y publicar un mensaje.
 - La `huella` de `whoami` es la de tu contraseña (la de `DB_PASS`).
 

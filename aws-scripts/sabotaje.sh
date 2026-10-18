@@ -57,6 +57,6 @@ fi
 
 
 echo "Se ha introducido un fallo en tu despliegue."
-echo "Comprueba que (a) la aplicación responde en /api/whoami, (b) puedes iniciar sesión y publicar un mensaje y (c) la huella de whoami es la de tu secreto."
+echo "Comprueba que (a) puedes iniciar sesión y publicar un mensaje y (b) la huella de whoami es la de tu secreto."
 echo "Si algo falla, averigua por qué y repáralo."
 echo "No olvides incluir sabotaje.txt en tu pull request."
