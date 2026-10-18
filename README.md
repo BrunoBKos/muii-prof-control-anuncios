@@ -77,7 +77,7 @@ Si algo no responde, no sigas, porque hay algo mal.
 
 **Pregunta (0,5 puntos).** `https://<INSTANCE_IP>/api/whoami` funciona, pero `https://<INSTANCE_IP>/api/mensajes` no. ¿Por qué?
 
-### Tarea 3. Identidad con Cognito y Hosted UI · 0,75 puntos
+### Tarea 3. Identidad con Cognito y Hosted UI · 1 punto
 
 Completa los `TODO` de `aws-scripts/cognito.sh`, que piden escribir en los comandos el nombre del *User Pool* y el del *App Client*, y ejecútalo.
 
@@ -113,9 +113,7 @@ Si tienes que volver a crear el *User Pool* y su dominio, el Hosted UI de Cognit
 
 El campo `usuario` debe mostrar tu usuario. Si no es así, no sigas porque hay algo mal.
 
-**Pregunta (1 punto).** Abre `https://<INSTANCE_IP>/`, pulsa **Entrar con Cognito** e intenta iniciar sesión con el usuario del examen (`EXAM_USER` y `EXAM_USER_PASS` de `params.txt`). ¿Por qué falla? Corrige este problema en `cognito.sh` y despliega correctamente.
-
-**Pregunta (1,25 puntos).** Abre `https://<INSTANCE_IP>/`, pulsa **Entrar con Cognito** e intenta iniciar sesión con el usuario del examen (`EXAM_USER` y `EXAM_USER_PASS` de `params.txt`). Una vez resuelto lo anterior, el Hosted UI vuelve a fallar. ¿Por qué falla de nuevo? Corrige este problema en `cognito.sh` y despliega correctamente.
+**Pregunta (1,5 puntos).** Abre `https://<INSTANCE_IP>/`, pulsa **Entrar con Cognito** e intenta iniciar sesión con el usuario del examen (`EXAM_USER` y `EXAM_USER_PASS` de `params.txt`). El Hosted UI muestra un error. ¿Por qué falla? Cognito solo redirige a direcciones registradas de antemano en el cliente de la aplicación: explica por qué existe esa restricción. Corrige este problema en `cognito.sh` y despliega correctamente.
 
 ### Tarea 4. Secretos · 0,75 puntos
 
@@ -156,7 +154,7 @@ Ejecuta `aws-scripts/sabotaje.sh`, **una sola vez**. El script introduce **un fa
 
 Si algo de esto falla, tu solución no es correcta.
 
-**Pregunta (1 punto).** Describe qué se había roto, cómo lo detectaste (qué síntoma viste y qué pruebas hiciste para localizar la causa) y cómo lo reparaste.
+**Pregunta (1,5 puntos).** Describe qué se había roto, cómo lo detectaste (qué síntoma viste y qué pruebas hiciste para localizar la causa) y cómo lo reparaste.
 
 ### Tarea 6. Terminar examen · 0,25 puntos
 

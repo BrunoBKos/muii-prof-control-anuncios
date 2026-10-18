@@ -88,7 +88,7 @@ CONF
 
 cat > "$PROJECT_ROOT/front/config.js" <<CONF
 // Generado por aws-scripts/cognito.sh. No editar a mano.
-window.COGNITO_CONFIG = { region: "$AWS_REGION", clientId: "$CLIENT_ID", domain: "anuncios" };
+window.COGNITO_CONFIG = { region: "$AWS_REGION", clientId: "$CLIENT_ID", domain: "anuncios-$EXAM_ID" };
 CONF
 
 echo "Configuración de Cognito finalizada."

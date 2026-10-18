@@ -1,5 +1,5 @@
 // Front mínimo. Nginx sirve esta página y reenvía /api/ al back, así que no hace falta CORS.
-// config.js lo genera cognito.sh con la región y el ClientId del User Pool (el dominio del Hosted UI no).
+// config.js lo genera cognito.sh con la región, el ClientId del User Pool y el dominio del Hosted UI.
 let accessToken = null;
 
 const $ = (id) => document.getElementById(id);
