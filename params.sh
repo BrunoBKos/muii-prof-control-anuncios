@@ -30,7 +30,7 @@ huella() {
 # derivar_parametros <EXAM_ID>
 derivar_parametros() {
     EXAM_ID="$1"
-    EXAM_USER="corrector"
+    EXAM_USER="admin"
     EXAM_USER_PASS="Corr-$(hash_corto "clave:$1" 8)-A1"
     SECRET_NAME="prod/anuncios/$1"
     DB_PASS="$(hash_corto "secreto:$1" 24)"
