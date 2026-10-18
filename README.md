@@ -29,7 +29,7 @@ La arquitectura que debes dejar desplegada es esta:
 
 ## Antes de empezar
 
-Coloca la clave SSH del laboratorio en `ssh-key/labsuser.pem`, pero **NO la subas al repositorio** (ahora mismo, está listada en `.gitignore`).
+Coloca la clave SSH del laboratorio en `ssh-key/labsuser.pem`, pero **NO la subas al repositorio** (ahora mismo, está listada en `.gitignore`). Ejecuta `chmod 400 ssh-key/labsuser.pem` para que `ssh` la acepte.
 
 1. Haz un *fork* de este repositorio, y trabaja directamente en su rama `main`.
 2. Tu **EXAM_ID** es un número aleatorio de 6 dígitos, que tú escoges libremente.
