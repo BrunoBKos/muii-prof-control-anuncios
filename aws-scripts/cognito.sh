@@ -49,8 +49,8 @@ CLIENT_ID=$(aws cognito-idp create-user-pool-client \
     --allowed-o-auth-flows code \
     --allowed-o-auth-scopes openid \
     --allowed-o-auth-flows-user-pool-client \
-    --callback-urls "https://<ip publica>/callback" \
-    --logout-urls "https://<ip publica>/logout" \
+    --callback-urls "https://<ip de la instancia>/callback" \
+    --logout-urls "https://<ip de la instancia>/logout" \
     --supported-identity-providers COGNITO \
     --query "UserPoolClient.ClientId" \
     --output text)

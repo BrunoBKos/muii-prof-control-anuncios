@@ -84,7 +84,7 @@ mv "$PROJECT_ROOT/entrega.txt.tmp" "$PROJECT_ROOT/entrega.txt"
 echo "IP pública de la instancia escrita en entrega.txt."
 
 # La IP también se escribe en cognito.sh (URL de retorno y de cierre de sesión), para que no haya que copiarla.
-sed "s/<ip publica>/$INSTANCE_IP/g" "$PROJECT_ROOT/aws-scripts/cognito.sh" > "$PROJECT_ROOT/aws-scripts/cognito.sh.tmp"
+sed "s/<ip de la instancia>/$INSTANCE_IP/g" "$PROJECT_ROOT/aws-scripts/cognito.sh" > "$PROJECT_ROOT/aws-scripts/cognito.sh.tmp"
 cat "$PROJECT_ROOT/aws-scripts/cognito.sh.tmp" > "$PROJECT_ROOT/aws-scripts/cognito.sh"
 rm -f "$PROJECT_ROOT/aws-scripts/cognito.sh.tmp"
 echo "IP pública de la instancia escrita en cognito.sh."
