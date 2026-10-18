@@ -58,9 +58,9 @@ if [ "${BASH_SOURCE[0]}" = "$0" ]; then
 
     derivar_parametros "$1"
     # IP pública de esta máquina (la usa ec2.sh para la regla del SSH). Si no se averigua, queda vacía.
-    MY_IP="$(curl -s --max-time 10 https://checkip.amazonaws.com | tr -d '[:space:]')"
-    if ! [[ "$MY_IP" =~ ^[0-9]{1,3}(\.[0-9]{1,3}){3}$ ]]; then
-        MY_IP=""
+    STUDENT_IP="$(curl -s --max-time 10 https://checkip.amazonaws.com | tr -d '[:space:]')"
+    if ! [[ "$STUDENT_IP" =~ ^[0-9]{1,3}(\.[0-9]{1,3}){3}$ ]]; then
+        STUDENT_IP=""
         {
             echo "************************************************************************"
             echo "************************************************************************"
@@ -76,13 +76,13 @@ EXAM_USER=$EXAM_USER
 EXAM_USER_PASS=$EXAM_USER_PASS
 SECRET_NAME=$SECRET_NAME
 DB_PASS=$DB_PASS
-MY_IP=$MY_IP
+STUDENT_IP=$STUDENT_IP
 ENV
     echo "Parámetros guardados en params.txt (no se sube al repositorio)."
     echo "  Usuario / contraseña . $EXAM_USER / $EXAM_USER_PASS"
     echo "  Nombre del secreto ... $SECRET_NAME"
     echo "  Contraseña de la BD .. $DB_PASS"
-    if [ -n "$MY_IP" ]; then echo "  Tu IP pública ........ detectada"; else echo "  Tu IP pública ........ no detectada"; fi
+    if [ -n "$STUDENT_IP" ]; then echo "  Tu IP pública ........ detectada"; else echo "  Tu IP pública ........ no detectada"; fi
 
     # entrega.txt: el EXAM_ID lo escribe este script. La IP la escribe el estudiante a mano
     # (si ya estaban escritas, no se tocan).

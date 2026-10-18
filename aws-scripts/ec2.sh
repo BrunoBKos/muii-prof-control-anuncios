@@ -25,12 +25,12 @@ SG_ID=$(aws ec2 create-security-group \
 echo "listo."
 
 echo -n "Creando regla de acceso (ssh)... "
-# SSH (puerto 22) solo desde la IP pública de esta máquina, con CIDR /32. params.sh la guarda en params.txt (MY_IP).
+# SSH (puerto 22) solo desde la IP pública de esta máquina, con CIDR /32. params.sh la guarda en params.txt (STUDENT_IP).
 aws ec2 authorize-security-group-ingress \
     --group-id "$SG_ID" \
     --protocol tcp \
     --port 22 \
-    --cidr "$MY_IP/32" \
+    --cidr "$STUDENT_IP/32" \
     --output text >/dev/null
 echo "listo."
 
@@ -78,13 +78,13 @@ echo -n "Esperando a que la IP pública esté asignada... "
 sleep 45
 echo "listo."
 
-PUBLIC_IP=$(aws ec2 describe-addresses --allocation-ids "$ALLOCATION_ID" --query "Addresses[0].PublicIp" --output text)
-sed "s/^IP=.*/IP=$PUBLIC_IP/" "$PROJECT_ROOT/entrega.txt" > "$PROJECT_ROOT/entrega.txt.tmp"
+INSTANCE_IP=$(aws ec2 describe-addresses --allocation-ids "$ALLOCATION_ID" --query "Addresses[0].PublicIp" --output text)
+sed "s/^IP=.*/IP=$INSTANCE_IP/" "$PROJECT_ROOT/entrega.txt" > "$PROJECT_ROOT/entrega.txt.tmp"
 mv "$PROJECT_ROOT/entrega.txt.tmp" "$PROJECT_ROOT/entrega.txt"
 echo "IP pública de la instancia escrita en entrega.txt."
 
 # La IP también se escribe en cognito.sh (URL de retorno y de cierre de sesión), para que no haya que copiarla.
-sed "s/<ip publica>/$PUBLIC_IP/g" "$PROJECT_ROOT/aws-scripts/cognito.sh" > "$PROJECT_ROOT/aws-scripts/cognito.sh.tmp"
+sed "s/<ip publica>/$INSTANCE_IP/g" "$PROJECT_ROOT/aws-scripts/cognito.sh" > "$PROJECT_ROOT/aws-scripts/cognito.sh.tmp"
 cat "$PROJECT_ROOT/aws-scripts/cognito.sh.tmp" > "$PROJECT_ROOT/aws-scripts/cognito.sh"
 rm -f "$PROJECT_ROOT/aws-scripts/cognito.sh.tmp"
 echo "IP pública de la instancia escrita en cognito.sh."

@@ -55,9 +55,9 @@ Ejecuta los scripts de `aws-scripts/` en el orden que indican las tareas.
 
 Completa los `TODO` de `back.sh` y ejecútalo. Debería terminar **sin errores**.
 
-**Pregunta (0,75 puntos).** El back publica su estado de salud en el puerto de gestión 8090, pero `http://<PUBLIC_IP>:8090/actuator/health` no responde desde Internet. ¿Por qué no? Corrige este problema en `ec2.sh` y despliega correctamente.
+**Pregunta (0,75 puntos).** El back publica su estado de salud en el puerto de gestión 8090, pero `http://<INSTANCE_IP>:8090/actuator/health` no responde desde Internet. ¿Por qué no? Corrige este problema en `ec2.sh` y despliega correctamente.
 
-**Pregunta adicional (+1 punto).** `http://<PUBLIC_IP>:8090/actuator/health` responde aunque `nginx.sh` no se haya ejecutado. ¿Por qué se puede acceder al puerto 8090 sin Nginx?
+**Pregunta adicional (+1 punto).** `http://<INSTANCE_IP>:8090/actuator/health` responde aunque `nginx.sh` no se haya ejecutado. ¿Por qué se puede acceder al puerto 8090 sin Nginx?
 
 ### Tarea 2. Despliegue de la instancia · 0,5 puntos
 
@@ -67,15 +67,15 @@ Nginx atiende por HTTPS con un **certificado autofirmado**, que se genera en la 
 
 **Checkpoint.** Cuando los scripts terminen de ejecutarse:
 
-- `https://<PUBLIC_IP>/api/whoami` debe responder un JSON que incluya tu `EXAM_ID`.
-- `https://<PUBLIC_IP>/` debe mostrar el front.
+- `https://<INSTANCE_IP>/api/whoami` debe responder un JSON que incluya tu `EXAM_ID`.
+- `https://<INSTANCE_IP>/` debe mostrar el front.
 
 Si algo no responde, no sigas, porque hay algo mal.
 
 - Si recibes un `502`, Spring Boot todavía está arrancando. Espera unos segundos y reintenta.
 - Si el servicio no arranca, mira el registro en la instancia con `sudo journalctl -u anuncios -n 50`.
 
-**Pregunta (0,5 puntos).** `https://<PUBLIC_IP>/api/whoami` funciona, pero `https://<PUBLIC_IP>/api/mensajes` no. ¿Por qué?
+**Pregunta (0,5 puntos).** `https://<INSTANCE_IP>/api/whoami` funciona, pero `https://<INSTANCE_IP>/api/mensajes` no. ¿Por qué?
 
 ### Tarea 3. Identidad con Cognito y Hosted UI · 0,75 puntos
 
@@ -108,14 +108,14 @@ Si tienes que volver a crear el *User Pool* y su dominio, el Hosted UI de Cognit
 2. Llama al back con dicho token:
 
    ```bash
-   curl -sk -H "Authorization: Bearer <TOKEN>" https://<PUBLIC_IP>/api/whoami
+   curl -sk -H "Authorization: Bearer <TOKEN>" https://<INSTANCE_IP>/api/whoami
    ```
 
 El campo `usuario` debe mostrar tu usuario. Si no es así, no sigas porque hay algo mal.
 
-**Pregunta (1 punto).** Abre `https://<PUBLIC_IP>/`, pulsa **Entrar con Cognito** e intenta iniciar sesión con el usuario del examen (`EXAM_USER` y `EXAM_USER_PASS` de `params.txt`). ¿Por qué falla? Corrige este problema en `cognito.sh` y despliega correctamente.
+**Pregunta (1 punto).** Abre `https://<INSTANCE_IP>/`, pulsa **Entrar con Cognito** e intenta iniciar sesión con el usuario del examen (`EXAM_USER` y `EXAM_USER_PASS` de `params.txt`). ¿Por qué falla? Corrige este problema en `cognito.sh` y despliega correctamente.
 
-**Pregunta (1,25 puntos).** Abre `https://<PUBLIC_IP>/`, pulsa **Entrar con Cognito** e intenta iniciar sesión con el usuario del examen (`EXAM_USER` y `EXAM_USER_PASS` de `params.txt`). Una vez resuelto lo anterior, el Hosted UI vuelve a fallar. ¿Por qué falla de nuevo? Corrige este problema en `cognito.sh` y despliega correctamente.
+**Pregunta (1,25 puntos).** Abre `https://<INSTANCE_IP>/`, pulsa **Entrar con Cognito** e intenta iniciar sesión con el usuario del examen (`EXAM_USER` y `EXAM_USER_PASS` de `params.txt`). Una vez resuelto lo anterior, el Hosted UI vuelve a fallar. ¿Por qué falla de nuevo? Corrige este problema en `cognito.sh` y despliega correctamente.
 
 ### Tarea 4. Secretos · 0,75 puntos
 
@@ -129,7 +129,7 @@ Rellena `aws-scripts/secreto.json` y ejecuta `aws-scripts/secrets.sh`, que crea 
 **Checkpoint.** Calcula la huella de tu contraseña y compárala con la que devuelve la aplicación. Las dos deben ser iguales.
 
 ```bash
-curl -sk https://<PUBLIC_IP>/api/whoami
+curl -sk https://<INSTANCE_IP>/api/whoami
 
 # En macOS
 printf '%s' "<DB_PASS>" | shasum -a 256
@@ -150,7 +150,7 @@ Ejecuta `aws-scripts/sabotaje.sh`, **una sola vez**. El script introduce **un fa
 
 **Checkpoint.** Cuando hayas reparado el fallo, comprueba las tres cosas que el propio script te recuerda.
 
-- La aplicación responde en `https://<PUBLIC_IP>/api/whoami`.
+- La aplicación responde en `https://<INSTANCE_IP>/api/whoami`.
 - Puedes iniciar sesión en el front con el usuario del examen y publicar un mensaje.
 - La `huella` de `whoami` es la de tu contraseña (la de `DB_PASS`).
 
@@ -162,7 +162,7 @@ Si algo de esto falla, tu solución no es correcta.
 
 Para terminar, cierra la sesión de la aplicación.
 
-**Checkpoint.** Abre `https://<PUBLIC_IP>/`, inicia sesión con el usuario del examen y pulsa **Salir**. Debes volver al front, sin sesión iniciada.
+**Checkpoint.** Abre `https://<INSTANCE_IP>/`, inicia sesión con el usuario del examen y pulsa **Salir**. Debes volver al front, sin sesión iniciada.
 
 **Pregunta (1 punto).** Al pulsar **Salir**, Cognito muestra una página de error en lugar de volver al front. ¿Por qué? ¿Por qué no se corrigió al arreglar el inicio de sesión? Corrige este problema en `cognito.sh` y despliega correctamente.
 
